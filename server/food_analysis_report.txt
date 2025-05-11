@@ -1,0 +1,13 @@
+Ingredients:
+faereteomrie
+Seekoons ran
+feo
+Sur
+
+Sea
+
+Quality Analysis:
+{'verification': 'Food', 'score': '75', 'classification': 'Good', 'concerns': ['High sugar content', 'Artificial preservatives'], 'alternative': 'Try organic alternatives'}
+
+Allergen Analysis:
+{'message': 'No known allergens detected.'}

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "191209205484",
+    "project_id": "eatwise-81340",
+    "storage_bucket": "eatwise-81340.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:191209205484:android:66abcb7ca888cfc6a47fc9",
+        "android_client_info": {
+          "package_name": "com.example.foodscanner_2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCX5HRe74HfvHBAwgnXz5zDFvtG71b5oC4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
