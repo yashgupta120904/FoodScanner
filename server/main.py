@@ -68,7 +68,7 @@ def analyze_with_gpt(ingredients: str) -> dict:
 Ingredients: {ingredients}
 
 Return ONLY valid JSON with these keys:
-1. "quality_score": integer from 0-10 (10 is highest quality)
+1. "quality_score": integer from 0-100 (100 is highest quality)
 2. "harmful_ingredients": list of ingredients that may be harmful to health
 3. "banned_by_country": dictionary mapping country names to lists of ingredients banned in those countries
 4. "common_allergens": list of common allergens present
@@ -76,7 +76,7 @@ Return ONLY valid JSON with these keys:
 
 Example format:
 {{
-  "quality_score": 7,
+  "quality_score": 70,
   "harmful_ingredients": ["Red Dye 40", "High Fructose Corn Syrup"],
   "banned_by_country": {{
     "European Union": ["Red Dye 40"],
@@ -225,7 +225,7 @@ async def analyze_food(file: UploadFile = File(...)):
 
     Returns a JSON with ingredient analysis including:
     - Extracted ingredients list
-    - Quality score (0-10)
+    - Quality score (0-100)
     - Health concerns (harmful ingredients, allergens, etc.)
     - Alternative healthier options
     """
@@ -246,11 +246,11 @@ async def analyze_food(file: UploadFile = File(...)):
             "harmful_interactions": []
         }
 
-        quality_score = 5
+        quality_score = 50
         alternatives = []
 
         if gpt_results:
-            quality_score = min(max(gpt_results.get("quality_score", 5), 0), 10)
+            quality_score = min(max(gpt_results.get("quality_score", 50), 0), 100)
             concerns["harmful_ingredients"] = list(set(gpt_results.get("harmful_ingredients", [])))
             concerns["banned_by_country"] = {k: list(set(v)) for k, v in gpt_results.get("banned_by_country", {}).items()}
             concerns["allergens"] = list(set(gpt_results.get("common_allergens", [])))
@@ -271,7 +271,7 @@ async def analyze_food(file: UploadFile = File(...)):
         print(f"Analysis Error: {str(e)}")
         return {
             "error": str(e),
-            "quality_score": 5,
+            "quality_score": 50,
             "concerns": {
                 "harmful_ingredients": [],
                 "banned_by_country": {},
